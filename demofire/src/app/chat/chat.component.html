@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="messages">
+    <div 
+      class="row align-items-center"
+      [ngClass]="{'justify-content-end mine': isMine(message)}" 
+      *ngFor="let message of messages | async">
+        <div class="photo col col-md-1" *ngIf="!isMine(message)">
+          <img [src]="message.photo" />
+        </div>
+        <div class="message">
+          {{message.content}}
+          <span class="time">{{message.date}}</span>
+        </div>
+        <div class="photo col col-md-1" *ngIf="isMine(message)">
+            <img [src]="message.photo" />
+          </div>
+    </div>
+  </div>
+  <div class="textarea" #messageForm ngForm>
+    <textarea 
+      class="form-control" 
+      (keyup.enter)="onKey($event)" 
+      name="content" 
+      [(ngModel)]="content"></textarea>
+  </div>
+</div>
