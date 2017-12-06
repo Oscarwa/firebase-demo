@@ -10,10 +10,15 @@
         <div class="message">
           {{message.content}}
           <span class="time">{{message.date}}</span>
+          <div *ngIf="isMine(message)">
+            <button class="btn btn-delete" (click)="delete(message)"></button>
+            <button class="btn btn-update" (click)="update(message)"></button>
+          </div>
         </div>
         <div class="photo col col-md-1" *ngIf="isMine(message)">
             <img [src]="message.photo" />
           </div>
+
     </div>
   </div>
   <div class="textarea" #messageForm ngForm>

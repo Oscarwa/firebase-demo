@@ -10,7 +10,7 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit {
-  messages: Observable<Message[]>;
+  messages: Observable<any[]>;
   content: string;
 
   constructor(
@@ -19,7 +19,7 @@ export class ChatComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.messages = this.messageService.getAll();
+    this.messages = this.messageService.getAll2();
   }
 
   isMine(message: Message): boolean {
@@ -27,6 +27,15 @@ export class ChatComponent implements OnInit {
       return message.from == this.authService.credential.user.uid;
     }
     return false;
+  }
+
+  delete(message: any) {
+    this.messageService.delete(message.$key);
+  }
+
+  update(message: any) {
+    message.content = message.content + '%';
+    this.messageService.update(message.$key, message);
   }
 
   onKey(event: any) {

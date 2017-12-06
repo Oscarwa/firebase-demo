@@ -1,3 +1,8 @@
+.container {
+    background-color: #fff6dd;
+    padding: 20px;
+}
+
 .messages {
     min-height: 80vh;
 }
@@ -17,6 +22,9 @@
     color: #888888;
     display: block;
 }
+.messages .mine .message .time {
+    color: #c4c4c4;
+}
 
 .messages .mine .message {
     border: 1px solid #203866;
@@ -33,4 +41,17 @@
 .photo img {
     height: 45px;
     border-radius: 50%;
+}
+
+.btn.btn-delete {
+    background-image: url('/assets/delete.svg');
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.btn.btn-update {
+    background-image: url('/assets/update.svg');
+    background-size: 15px 15px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
